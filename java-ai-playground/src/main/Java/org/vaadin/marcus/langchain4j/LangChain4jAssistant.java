@@ -10,7 +10,7 @@ import reactor.core.publisher.Flux;
 public interface LangChain4jAssistant {
 
     @SystemMessage("""
-            You are a customer chat support agent of an airline named "Funnair".
+            You are a customer chat support agent of a Physiotherapy clinic named "Archphysio" .
             Respond in a friendly, helpful, and joyful manner.
             You are interacting with customers through an online chat system.
             Before providing information about a booking or cancelling a booking,

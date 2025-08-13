@@ -10,14 +10,12 @@ public class Booking {
     private Customer customer;
     private String from;
     private String to;
-    private BookingStatus bookingStatus;
     private BookingClass bookingClass;
 
-    public Booking(String bookingNumber, LocalDate date, Customer customer, BookingStatus bookingStatus, String from, String to, BookingClass bookingClass) {
+    public Booking(String bookingNumber, LocalDate date, Customer customer) {
         this.bookingNumber = bookingNumber;
         this.date = date;
         this.customer = customer;
-        this.bookingStatus = bookingStatus;
         this.from = from;
         this.to = to;
         this.bookingClass = bookingClass;
@@ -56,13 +54,8 @@ public class Booking {
         this.customer = customer;
     }
 
-    public BookingStatus getBookingStatus() {
-        return bookingStatus;
-    }
 
-    public void setBookingStatus(BookingStatus bookingStatus) {
-        this.bookingStatus = bookingStatus;
-    }
+
 
     public String getFrom() {
         return from;

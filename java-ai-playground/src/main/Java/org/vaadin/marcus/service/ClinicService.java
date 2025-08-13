@@ -9,20 +9,19 @@ import java.util.List;
 import java.util.Random;
 
 @Service
-public class FlightService {
+public class ClinicService {
 
     private final BookingData db;
 
-    public FlightService() {
+    public ClinicService() {
         db = new BookingData();
 
         initDemoData();
     }
 
     private void initDemoData() {
-        List<String> firstNames = List.of("John", "Jane", "Michael", "Sarah", "Robert");
-        List<String> lastNames = List.of("Doe", "Smith", "Johnson", "Williams", "Taylor");
-        List<String> airportCodes = List.of("LAX", "SFO", "JFK", "LHR", "CDG", "ARN", "HEL", "TXL", "MUC", "FRA", "MAD", "SJC");
+        List<String> firstNames = List.of("Ekaette ", "Ali", "Frances ", "Gospel ", "Chuwee");
+        List<String> lastNames = List.of("Archibong", "Cain", "Adewunmi", "Hope", "Osemeka");
         Random random = new Random();
 
         var customers = new ArrayList<Customer>();
@@ -31,16 +30,13 @@ public class FlightService {
         for (int i = 0; i < 5; i++) {
             String firstName = firstNames.get(i);
             String lastName = lastNames.get(i);
-            String from = airportCodes.get(random.nextInt(airportCodes.size()));
-            String to = airportCodes.get(random.nextInt(airportCodes.size()));
-            BookingClass bookingClass = BookingClass.values()[random.nextInt(BookingClass.values().length)];
             Customer customer = new Customer();
             customer.setFirstName(firstName);
             customer.setLastName(lastName);
 
             LocalDate date = LocalDate.now().plusDays(2*i);
 
-            Booking booking = new Booking("10" + (i + 1), date, customer, BookingStatus.CONFIRMED, from, to, bookingClass);
+            Booking booking = new Booking("10" + (i + 1), date, customer);
             customer.getBookings().add(booking);
 
             customers.add(customer);
@@ -88,7 +84,6 @@ public class FlightService {
         if (booking.getDate().isBefore(LocalDate.now().plusDays(2))) {
             throw new IllegalArgumentException("Booking cannot be cancelled within 48 hours of the start date.");
         }
-        booking.setBookingStatus(BookingStatus.CANCELLED);
     }
 
     private BookingDetails toBookingDetails(Booking booking){
@@ -97,10 +92,8 @@ public class FlightService {
                 booking.getCustomer().getFirstName(),
                 booking.getCustomer().getLastName(),
                 booking.getDate(),
-                booking.getBookingStatus(),
                 booking.getFrom(),
-                booking.getTo(),
-                booking.getBookingClass().toString()
+                booking.getTo()
         );
     }
 }

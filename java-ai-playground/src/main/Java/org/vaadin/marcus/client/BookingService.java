@@ -1,7 +1,7 @@
 package org.vaadin.marcus.client;
 
 import org.vaadin.marcus.service.BookingDetails;
-import org.vaadin.marcus.service.FlightService;
+import org.vaadin.marcus.service.ClinicService;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.hilla.BrowserCallable;
 
@@ -10,9 +10,9 @@ import java.util.List;
 @BrowserCallable
 @AnonymousAllowed
 public class BookingService {
-    private final FlightService carRentalService;
+    private final ClinicService carRentalService;
 
-    public BookingService(FlightService carRentalService) {
+    public BookingService(ClinicService carRentalService) {
         this.carRentalService = carRentalService;
     }
 
